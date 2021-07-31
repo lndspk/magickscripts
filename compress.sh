@@ -7,10 +7,12 @@ read -p 'input file: ' inputpath
 read -p 'fuzz (default - 7%): ' fuzz
 fuzz="${fuzz:=7%}"
 
-mogrify -layers 'optimize' -fuzz $fuzz $inputpath
+read -p 'export file: ' exportfile
 
-if test -f "$inputpath"; then
-	echo "done: $inputpath"
+mogrify $inputpath -layers 'optimize' -fuzz $fuzz $exportpath
+
+if test -f "$exportfile"; then
+	echo "done: $exportfile"
 else
 	echo "error"
 fi
